@@ -28,7 +28,11 @@ export default function LoginPage() {
     setLoading(false);
 
     if (result?.error) {
-      setError("Invalid email or password. Please try again.");
+      if (result.error === "CredentialsSignin") {
+        setError("Invalid email or password. Please try again.");
+      } else {
+        setError("Sign-in is temporarily unavailable. Check the deployment auth settings and try again.");
+      }
     } else {
       router.push("/dashboard");
       router.refresh();

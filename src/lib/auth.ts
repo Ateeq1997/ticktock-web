@@ -1,7 +1,17 @@
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const authSecret = process.env.NEXTAUTH_SECRET || "ticktock-demo-secret";
+const vercelUrl = process.env.VERCEL_URL;
+
+if (!process.env.NEXTAUTH_URL && vercelUrl) {
+  process.env.NEXTAUTH_URL = `https://${vercelUrl}`;
+}
+
+export const authSecret = process.env.NEXTAUTH_SECRET || "ticktock-demo-secret";
+export const authPages = {
+  signIn: "/login",
+  error: "/login",
+} as const;
 
 const MOCK_USERS = [
   { id: "1", name: "John Doe", email: "john@example.com", password: "password123" },
@@ -35,10 +45,7 @@ export const authOptions: AuthOptions = {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
   },
-  pages: {
-    signIn: "/login",
-    error: "/login",
-  },
+  pages: authPages,
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
