@@ -1,6 +1,8 @@
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+const authSecret = process.env.NEXTAUTH_SECRET || "ticktock-demo-secret";
+
 const MOCK_USERS = [
   { id: "1", name: "John Doe", email: "john@example.com", password: "password123" },
   { id: "2", name: "Jane Smith", email: "jane@example.com", password: "password123" },
@@ -51,5 +53,5 @@ export const authOptions: AuthOptions = {
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: authSecret,
 };

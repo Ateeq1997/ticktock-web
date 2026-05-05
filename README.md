@@ -154,6 +154,8 @@ npm start
    - `NEXTAUTH_URL` — your Vercel deployment URL (e.g. `https://ticktock.vercel.app`)
 4. Deploy
 
+If `NEXTAUTH_SECRET` is not set, the app falls back to a demo secret so the assessment project can still run on Vercel. For any real deployment, set both variables explicitly.
+
 ---
 
 ## 📝 Assumptions & Notes
