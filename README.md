@@ -32,6 +32,15 @@ A SaaS-style Timesheet Management application built for the TenTwenty Frontend D
 
 ---
 
+## ✨ Recent Improvements
+
+- Dashboard search across week, status, project, task, and note content
+- Server-side sorting for week number, date range, status, and logged hours
+- Dashboard summary cards for matching weeks, total hours, completed weeks, and weeks needing attention
+- CSV export for the current filtered dashboard view
+
+---
+
 ## 📁 Project Structure
 
 ```
